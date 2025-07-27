@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookingSchema = mongoose.Schema({
   user: { // The client who made the booking
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    required: false,
     ref: 'User',
   },
   service: { // The photography service booked

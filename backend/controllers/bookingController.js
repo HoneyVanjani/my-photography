@@ -39,8 +39,9 @@ const checkAvailability = async (serviceId, bookingDate, startTime, endTime) => 
 // @access  Private (requires authentication)
 const createBooking = asyncHandler(async (req, res) => {
   const { serviceId, bookingDate, startTime, endTime, occasion, notes } = req.body;
-  const userId = req.user._id; // User ID from authenticated token
+  //const userId = req.user._id; // User ID from authenticated token
 
+  
   if (!serviceId || !bookingDate || !startTime || !endTime || !occasion) {
     res.status(400);
     throw new Error('Please provide all required fields (service, date, time, occasion).');
@@ -73,7 +74,6 @@ const createBooking = asyncHandler(async (req, res) => {
   const totalPrice = service.price; // Simple pricing based on service
 
   const newBooking = new Booking({
-    user: userId,
     service: serviceId,
     bookingDate: new Date(bookingDate),
     startTime,
